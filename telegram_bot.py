@@ -1,6 +1,6 @@
 import logging
 from telegram.constants import ParseMode
-from telegram.ext import ApplicationBuilder, Defaults, ContextTypes, CommandHandler
+from telegram.ext import ApplicationBuilder, Defaults
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

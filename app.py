@@ -13,4 +13,5 @@ if __name__ == '__main__':
     bot = TelegramBot(config['telegram'])
     analytics = Analytics(config['analytics'])
     server = Server(config['server'], bot, analytics)
+    server.add_routes(config['propertirs'])
     server.run()

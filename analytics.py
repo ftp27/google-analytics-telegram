@@ -17,12 +17,11 @@ class Analytics:
         """Runs a simple report on a Google Analytics 4 property."""
         client = BetaAnalyticsDataClient()
         date_format = "%Y-%m-%d"
-        today = date.today().strftime(date_format)
         week_ago = (date.today() - timedelta(days = 7)).strftime(date_format)
         
         request = RunReportRequest(
             property=f"properties/{self.property_id}",
-            dimensions=[Dimension(name="customEvent:" + event_name)], #"customEvent:category_name"
+            dimensions=[Dimension(name="customEvent:" + event_name)],
             metrics=[Metric(name="activeUsers")],
             date_ranges=[DateRange(start_date=week_ago, end_date="today")], 
             limit=limit,

@@ -1,5 +1,4 @@
-matplotlib==3.6.3
-numpy==1.24.2
-protobuf==4.21.12
+google-analytics-data
+python-telegram-bot
 aiohttp==3.7.4
 PyYAML==5.4.1
