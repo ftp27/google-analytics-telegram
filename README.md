@@ -48,7 +48,7 @@ analytics:
 telegram:
   token: <your_telegram_bot_token>
   chat_id: <your_telegram_chat_id>
-propertirs:
+properties:
   - 
     title: <property_title_for_a_message>
     dimension: <dimension_id>
