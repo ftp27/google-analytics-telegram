@@ -56,7 +56,7 @@ properties:
     endpoint: <enpoint for the server>
   - # Example
     title: 'Popular categories'
-    dimension: 'category_name'
+    dimension: 'customEvent:category_name'
     limit: 15
     endpoint: 'top_categories'
 ```

@@ -21,8 +21,16 @@ class TelegramBot:
         message = f'*{title}:*\n'
         index = 1
         for row in data:
-            message += f'{str(index)}. {row[0]} - _{row[1]}_\n'
+            message += f'{str(index)}. {row.name} - _{row.amount}_'
+            if row.difference > 0:
+                message += f' *↑+{row.difference}*'
+            elif row.difference < 0:
+                message += f' *↓{row.difference}*'
+            message += '\n'
             index += 1
+        
+        if index > 1:
+            message += f'Updated at - {data[0].current} (UTC)\n'
         return message
 
     async def send_report(self, report, title):
