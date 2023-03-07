@@ -1,6 +1,7 @@
 import logging
 from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, Defaults
+from telegram.helpers import escape_markdown
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -13,7 +14,7 @@ class TelegramBot:
         self.application = (
             ApplicationBuilder()
             .token(config['token'])
-            .defaults(Defaults(parse_mode=ParseMode.MARKDOWN))
+            .defaults(Defaults(parse_mode=ParseMode.MARKDOWN_V2))
             .build()
         )
 
@@ -21,16 +22,20 @@ class TelegramBot:
         message = f'*{title}:*\n'
         index = 1
         for row in data:
-            message += f'{str(index)}. {row.name} - _{row.amount}_'
+            name = escape_markdown(row.name, version=2)
+            message += f'{str(index)}\. {name} \- _{row.amount}_'
             if row.difference > 0:
-                message += f' *↑+{row.difference}*'
+                diff = escape_markdown(f'↑+{row.difference}', version=2)
+                message += f' *{diff}*'
             elif row.difference < 0:
-                message += f' *↓{row.difference}*'
+                diff = escape_markdown(f'↓{row.difference}', version=2)
+                message += f' *{diff}*'
             message += '\n'
             index += 1
         
         if index > 1:
-            message += f'Updated at - {data[0].current} (UTC)\n'
+            message +=  escape_markdown(f'Updated at - {data[0].current} (UTC)\n', version=2) 
+        print(message)
         return message
 
     async def send_report(self, report, title):
