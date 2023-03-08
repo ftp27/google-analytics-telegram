@@ -21,7 +21,6 @@ class Database:
                 property_id=property, 
                 timestamp=timestamp
             )
-            property_item.save()
     
     async def update_names(self, property: str, data):
         for item in data:
@@ -31,13 +30,13 @@ class Database:
             if name_select.exists():
                 name = name_select.get()
                 name.name = item['name']
+                name.save()
             else:
                 name = PropertyName.create(
                     id = item['id'],
                     name = item['name'],
                     property_id = property
                 )
-            name.save()
 
     async def fetch_property_by_time(self, property: str, timestamp):
         query = PropertyItem \
