@@ -119,7 +119,3 @@ docker-compose up -d
 ```
 
 This will run the container in the background, and mount the config.yml and service_account.json files as volumes.
-
-### License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
