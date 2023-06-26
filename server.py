@@ -6,6 +6,7 @@ class AnalyticsProperty:
     def __init__(self, config):
         self.title = config['title']
         self.dimension = config['dimension']
+        self.event_filter = config.get('event_filter', None)
         self.limit = config['limit']
         self.endpoint = config['endpoint']
         self.plugin = config.get('plugin', None)

@@ -21,7 +21,7 @@ class App:
         self.server.run()
 
     async def sync_property(self, property):
-        report = self.analytics.run_report(property.dimension, property.limit)
+        report = self.analytics.run_report(property.dimension, property.event_filter, property.limit)
         await self.database.update_property(property.endpoint, report)
 
     async def send_report(self, property):

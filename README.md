@@ -59,6 +59,12 @@ properties:
     dimension: 'customEvent:category_name'
     limit: 15
     endpoint: 'top_categories'
+  - # Example with event filter
+    title: 'Impressions by category'
+    dimension: 'customEvent:category_name'
+    event_filter: 'category_like'
+    limit: 15
+    endpoint: 'impressions'
 ```
 
 Create a service account for your Google Analytics property and download the private key file in JSON format. Rename the file to service_account.json and place it in the `data` directory of the project.
